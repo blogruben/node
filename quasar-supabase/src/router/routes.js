@@ -19,6 +19,10 @@ const routes = [
         path: "signup",
         component: () => import("pages/SignUpUser.vue"),
       },
+      {
+        path: "confirmation",
+        component: () => import("pages/ConfirmacionMagicLogin.vue"),
+      },
     ],
   },
   {

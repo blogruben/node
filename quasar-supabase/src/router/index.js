@@ -8,7 +8,12 @@ import {
 import routes from "./routes";
 //import { storeToRefs } from "pinia";
 import { useGeneralStore } from "stores/general";
-import { existAccessToken } from "boot/supabase";
+//import { existAccessToken } from "boot/supabase";
+import { supabase } from "boot/supabase.js";
+//import { useRouter } from "vue-router";
+
+//const router = useRouter();
+//const generalStore = useGeneralStore();
 
 const defaultUser = import.meta.env.VITE_DEFAULT_USER;
 /*
@@ -19,6 +24,22 @@ const defaultUser = import.meta.env.VITE_DEFAULT_USER;
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
+
+// async function checkUser() {
+//   try {
+//     const {
+//       data: {
+//         session: { user },
+//       },
+//     } = await supabase.auth.getSession();
+//     debugger;
+//     if (user?.email && generalStore.user === user?.email)
+//       generalStore.user = user?.email;
+//     console.log("Email usuario actualizado.");
+//   } catch (error) {
+//     console.log("Error al actualizar user:", error);
+//   }
+// }
 
 export default route(function (/* { store, ssrContext } */) {
   const generalStore = useGeneralStore();
@@ -43,13 +64,18 @@ export default route(function (/* { store, ssrContext } */) {
     // called when the route that renders this component is about to
     // be navigated away from.
     // has access to `this` component instance.
-    console.log("beforeResolve");
-    console.log("existAccessToken", existAccessToken());
-    console.log("eneralStore.user", generalStore.user);
-    if (!existAccessToken() && generalStore.user !== defaultUser) {
-      console.log("no existe AccessToken");
-      generalStore.user = defaultUser;
-    }
+
+    //en caso de que se haya borrado el token del localStore
+    //poner el usuario por defecto (Anonimo)
+    // if (!existAccessToken() && generalStore.user !== defaultUser) {
+    //   console.log("no existe AccessToken");
+    //   generalStore.user = defaultUser;
+    // }
+
+    //checkUser();
+
+    //console.log("to", to);
+
     //console.log("beforeResolve");
     next();
   });

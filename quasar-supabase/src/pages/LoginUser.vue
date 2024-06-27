@@ -20,22 +20,23 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const generalStore = useGeneralStore();
-const { user } = storeToRefs(generalStore);
+//const { user } = storeToRefs(generalStore);
 const inputEmail = ref("info@blogruben.com");
 const password = ref(null);
 
 async function onSubmit() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: inputEmail.value,
-    password: password.value,
-  });
-  password.value = null;
-  if (error) {
-    alert(error);
-  } else {
-    user.value = inputEmail.value;
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: inputEmail.value,
+      password: password.value,
+    });
+    password.value = null;
+    if (error) throw error;
+    //user.value = inputEmail.value;
     inputEmail.value = null;
     router.push({ path: "/dashboard/one" });
+  } catch (error) {
+    alert(error.message);
   }
 }
 </script>

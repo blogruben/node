@@ -18,20 +18,21 @@ import { useGeneralStore } from "stores/general";
 import { storeToRefs } from "pinia";
 
 const generalStore = useGeneralStore();
-const { user } = storeToRefs(generalStore);
+//const { user } = storeToRefs(generalStore);
 const email = ref("info@blogruben.com");
 const password = ref(null);
 
 async function onSubmit() {
-  const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value,
-  });
-  password.value = null;
-  if (error) {
-    alert(error);
-  } else {
-    user.value = email.value;
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email: email.value,
+      password: password.value,
+    });
+    password.value = null;
+    if (error) throw error;
+    //user.value = email.value;
+  } catch (error) {
+    alert(error.message);
   }
 }
 </script>
