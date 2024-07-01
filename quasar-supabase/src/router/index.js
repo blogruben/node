@@ -72,11 +72,6 @@ export default route(function (/* { store, ssrContext } */) {
     //   generalStore.user = defaultUser;
     // }
 
-    //checkUser();
-
-    //console.log("to", to);
-
-    //console.log("beforeResolve");
     next();
   });
 

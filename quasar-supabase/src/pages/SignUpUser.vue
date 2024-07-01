@@ -14,11 +14,7 @@
 <script setup>
 import { ref } from "vue";
 import { supabase } from "boot/supabase.js";
-import { useGeneralStore } from "stores/general";
-import { storeToRefs } from "pinia";
 
-const generalStore = useGeneralStore();
-//const { user } = storeToRefs(generalStore);
 const email = ref("info@blogruben.com");
 const password = ref(null);
 

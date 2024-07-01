@@ -14,9 +14,7 @@
 <script setup>
 import { ref } from "vue";
 import { supabase } from "boot/supabase.js";
-import { useRouter } from "vue-router";
 
-//const router = useRouter();
 const inputEmail = ref("info@blogruben.com");
 
 async function onSubmit() {

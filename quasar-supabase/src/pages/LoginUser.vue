@@ -14,10 +14,7 @@
 <script setup>
 import { ref } from "vue";
 import { supabase } from "boot/supabase.js";
-import { useGeneralStore } from "stores/general";
 import { useRouter } from "vue-router";
-
-const generalStore = useGeneralStore();
 
 const router = useRouter();
 const inputEmail = ref("info@blogruben.com");
@@ -33,7 +30,7 @@ async function onSubmit() {
     if (error) throw error;
     console.log("Logueado con contrasena.");
     router.push({ path: "/dashboard/one" });
-    //generalStore.checkUserEmail();
+    generalStore.checkUserEmail();
   } catch (error) {
     alert("Error al eloguearse con password", error);
   }
