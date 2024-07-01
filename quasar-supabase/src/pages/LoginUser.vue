@@ -15,12 +15,11 @@
 import { ref } from "vue";
 import { supabase } from "boot/supabase.js";
 import { useGeneralStore } from "stores/general";
-import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 
-const router = useRouter();
 const generalStore = useGeneralStore();
-//const { user } = storeToRefs(generalStore);
+
+const router = useRouter();
 const inputEmail = ref("info@blogruben.com");
 const password = ref(null);
 
@@ -32,11 +31,11 @@ async function onSubmit() {
     });
     password.value = null;
     if (error) throw error;
-    //user.value = inputEmail.value;
-    inputEmail.value = null;
+    console.log("Logueado con contrasena.");
     router.push({ path: "/dashboard/one" });
+    //generalStore.checkUserEmail();
   } catch (error) {
-    alert(error.message);
+    alert("Error al eloguearse con password", error);
   }
 }
 </script>

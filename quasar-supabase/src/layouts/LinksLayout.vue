@@ -10,8 +10,8 @@
         <q-route-tab to="/" label="Welcome" />
         <q-route-tab to="/signup" label="Sign up" />
         <q-route-tab to="/login" label="Login Pass" />
+        <q-route-tab to="/loginanon" label="Login Anon" />
         <q-route-tab to="/loginmagic" label="Login Magic" />
-        <q-route-tab label="Reset password" />
         User: {{ user }}
       </q-tabs>
       <q-tabs>
@@ -20,6 +20,7 @@
         <q-route-tab to="/dashboard/three" label="Dashboard 3" />
         <q-route-tab label="Logout" @click="logout" />
         <q-route-tab label="check" @click="check" />
+        <q-route-tab label="Reset password" />
       </q-tabs>
     </q-header>
 
@@ -55,19 +56,24 @@ async function check() {
 }
 
 async function checkUserEmail() {
-  try {
-    const authSession = await supabase.auth.getSession();
-    const userMail = authSession.data?.session?.user?.email;
-    const userDefault = import.meta.env.VITE_DEFAULT_USER;
-    if (userMail && generalStore.user !== userMail) {
-      generalStore.user = userMail;
-      console.log("Email usuario actualizado al email de la session.");
-    } else if (!userMail && generalStore.user !== userDefault) {
-      generalStore.user = userDefault;
-      console.log("Email usuario actualizado a valor por defecto.");
-    }
-  } catch (error) {
-    console.log("Error al actualizar user:", error);
-  }
+  const generalStore = useGeneralStore();
+  generalStore.checkUserEmail();
 }
+
+// async function checkUserEmail() {
+//   try {
+//     const authSession = await supabase.auth.getSession();
+//     const userMail = authSession.data?.session?.user?.email;
+//     const userDefault = import.meta.env.VITE_DEFAULT_USER;
+//     if (userMail && generalStore.user !== userMail) {
+//       generalStore.user = userMail;
+//       console.log("Email usuario actualizado al email de la session.");
+//     } else if (!userMail && generalStore.user !== userDefault) {
+//       generalStore.user = userDefault;
+//       console.log("Email usuario actualizado a valor por defecto.");
+//     }
+//   } catch (error) {
+//     console.log("Error al actualizar user:", error);
+//   }
+// }
 </script>

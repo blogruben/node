@@ -14,23 +14,13 @@
 <script setup>
 import { ref } from "vue";
 import { supabase } from "boot/supabase.js";
-import { useGeneralStore } from "stores/general";
-import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 
-const router = useRouter();
-//const generalStore = useGeneralStore();
-//const { user } = storeToRefs(generalStore);
+//const router = useRouter();
 const inputEmail = ref("info@blogruben.com");
-//const password = ref(null);
 
 async function onSubmit() {
   try {
-    // const { data, error } = await supabase.auth.signIn({
-    //   email: inputEmail.value,
-    //   password: password.value,
-    // });
-
     const { data, error } = await supabase.auth.signInWithOtp({
       email: inputEmail.value,
       options: {
@@ -39,9 +29,9 @@ async function onSubmit() {
       },
     });
     if (error) throw error;
-    console.log("data", data);
+    console.log("Correo con magic link enviado");
   } catch (error) {
-    alert(error.message);
+    alert("Error al enviar el correo con magic link", error);
   }
 }
 </script>

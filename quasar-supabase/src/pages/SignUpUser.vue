@@ -28,11 +28,13 @@ async function onSubmit() {
       email: email.value,
       password: password.value,
     });
+    debugger;
     password.value = null;
+
     if (error) throw error;
     //user.value = email.value;
   } catch (error) {
-    alert(error.message);
+    alert(error);
   }
 }
 </script>

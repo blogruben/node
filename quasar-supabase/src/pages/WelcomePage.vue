@@ -1,7 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <h1>Welcome</h1>
+  <q-page class="flex flex-center column">
+    <h3>Welcome</h3>
     <q-btn label="Check session" color="primary" @click="check" />
+
+    <p>Falta loguin anonimo</p>
+    <p>un listado de prueba</p>
+    <p>borrar el env de github</p>
   </q-page>
 </template>
 
@@ -9,12 +13,8 @@
 import { supabase } from "boot/supabase.js";
 async function check() {
   console.log(supabase.auth);
-  const {
-    data: {
-      session: { user },
-    },
-  } = await supabase.auth.getSession();
-  console.log(user.email);
+  const data = await supabase.auth.getSession();
+  console.log("Email " + data?.data?.session?.user?.email);
 
   //const { error } = await supabase.auth.verifyOtp({ token_hash, type })
 }
