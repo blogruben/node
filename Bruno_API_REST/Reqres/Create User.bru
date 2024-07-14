@@ -1,0 +1,82 @@
+meta {
+  name: Create User
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://reqres.in/api/users
+  body: json
+  auth: none
+}
+
+headers {
+  headerKey1: headerValue1
+  headerKey2: headerValue2
+}
+
+auth:basic {
+  username: 
+  password: 
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+      "name": "morpheus",
+      "job": "leader"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body.name: morpheus
+  res.body.job: leader
+}
+
+script:pre-request {
+  const headerValue1=req.getHeader("headerKey1");
+  console.log("headerValue1 is:",headerValue1);
+  const headerValue2=req.getHeader("headerKey2");
+  console.log("headerValue2 is:",headerValue2);
+  const headerValues=req.getHeaders();
+  console.log("headerValues are:",headerValues);
+}
+
+script:post-response {
+  const headerValue1=res.getHeader("connection");
+  console.log("headerValue1 is:",headerValue1);
+  const headerValue2=res.getHeader("server");
+  console.log("headerValue2 is:",headerValue2);
+  const headerValues=res.getHeaders();
+  console.log("headerValues are:",headerValues);
+}
+
+tests {
+  test("status code test", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+  test("name data type test", function() {
+    const data = res.getBody();
+    expect(data.name).to.be.a('string');
+  });
+  test("name value test", function() {
+    const data = res.getBody();
+    expect(data.name).to.equal("morpheus");
+  });
+  test("status text check", function() {
+    expect(res.statusText).to.equal("Created");
+  });
+  test("header value test", function() {
+    expect(res.getHeader("connection")).to.equal("close");
+  });
+  
+  
+  
+  
+  
+}

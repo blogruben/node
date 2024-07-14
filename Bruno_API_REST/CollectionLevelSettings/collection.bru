@@ -1,0 +1,39 @@
+headers {
+  headerKey1: headerValue1
+  headerKey2: headerValue2
+}
+
+auth {
+  mode: basic
+}
+
+auth:basic {
+  username: postman
+  password: password
+}
+
+script:pre-request {
+  console.log("This is pre request script");
+  const headerValue1=req.getHeader("headerKey1");
+  console.log("headerValue1 is:",headerValue1);
+  const headerValue2=req.getHeader("headerKey2");
+  console.log("headerValue2 is:",headerValue2);
+  const headerValues=req.getHeaders();
+  console.log("headerValues are:",headerValues);
+}
+
+script:post-response {
+  console.log("This is post response script");
+  const headerValue1=res.getHeader("connection");
+  console.log("headerValue1 is:",headerValue1);
+  const headerValue2=res.getHeader("content-length");
+  console.log("headerValue2 is:",headerValue2);
+  const headerValues=res.getHeaders();
+  console.log("headerValues are:",headerValues);
+}
+
+tests {
+  test("status code test", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

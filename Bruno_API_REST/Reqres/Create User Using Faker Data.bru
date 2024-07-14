@@ -1,0 +1,67 @@
+meta {
+  name: Create User Using Faker Data
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://reqres.in/api/users
+  body: none
+  auth: none
+}
+
+auth:basic {
+  username: 
+  password: 
+}
+
+auth:bearer {
+  token: 
+}
+
+vars:post-response {
+  nameValue: res.body.name
+  jobValue: res.body.job
+}
+
+assert {
+  res.status: 201
+  res.body.name: eq {{nameValue}}
+  res.body.job: eq {{jobValue}}
+}
+
+script:pre-request {
+  const { faker } = require('@faker-js/faker');
+  const randomName = faker.person.firstName();
+  const randomJob = faker.person.jobTitle();
+  req.setBody({
+    name: randomName,
+    job: randomJob
+  });
+  
+}
+
+script:post-response {
+  bru.setVar("name", res.body.name);
+  bru.setVar("job", res.body.job);
+}
+
+tests {
+  test("status code test", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+  test("name value test", function() {
+    const data = res.getBody();
+    expect(data.name).to.equal(bru.getVar("name"));
+  });
+  test("job value test", function() {
+    const data = res.getBody();
+    expect(data.job).to.equal(bru.getVar("job"));
+  });
+  
+  
+  
+  
+  
+}

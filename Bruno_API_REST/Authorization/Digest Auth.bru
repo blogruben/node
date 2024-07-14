@@ -1,0 +1,16 @@
+meta {
+  name: Digest Auth
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://postman-echo.com/digest-auth
+  body: none
+  auth: digest
+}
+
+auth:digest {
+  username: postman
+  password: password
+}

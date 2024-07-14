@@ -1,0 +1,31 @@
+meta {
+  name: Get Favourite Airports Using Headers
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://airportgap.com/api/favorites
+  body: none
+  auth: none
+}
+
+headers {
+  ~Content-Type: application/json
+  ~Authorization: Bearer vk3tMtUAZ9XNFEyACf1FLJZJ
+}
+
+auth:bearer {
+  token: 
+}
+
+script:pre-request {
+  // passing single headers one by one
+  // req.setHeader( "content-type", "application/json");
+  // req.setHeader( "Authorization", "Bearer vk3tMtUAZ9XNFEyACf1FLJZJ");
+  // passing multiple headers
+  req.setHeaders({
+    "content-type": "application/json",
+    "Authorization": "Bearer vk3tMtUAZ9XNFEyACf1FLJZJ"
+  });
+}

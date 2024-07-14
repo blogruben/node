@@ -1,0 +1,19 @@
+meta {
+  name: Create User Using cURL command
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://reqres.in/api/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  "{ \"name\": \"morpheus\", \"job\": \"leader\" }"
+}

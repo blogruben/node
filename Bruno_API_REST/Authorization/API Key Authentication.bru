@@ -1,0 +1,16 @@
+meta {
+  name: API Key Authentication
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://api.openweathermap.org/data/2.5/weather?q=Kochi&appid={{apiKey}}
+  body: none
+  auth: none
+}
+
+query {
+  q: Kochi
+  appid: {{apiKey}}
+}

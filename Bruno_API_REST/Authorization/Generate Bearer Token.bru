@@ -1,0 +1,52 @@
+meta {
+  name: Generate Bearer Token
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://airportgap.com/api/tokens
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "cyrilgeorge153@gmail.com",
+    "password": "{{passwordEnvValue}}"
+  }
+}
+
+vars:pre-request {
+  emailValue: cyrilgeorge153@gmail.com
+  passwordValue: password
+}
+
+vars:post-response {
+  ~tokenValue: res.body.token
+}
+
+assert {
+  res.responseTime: lte 2000
+}
+
+script:pre-request {
+  // req.setBody({
+  //   "email": "{{emailValue}}",
+  //   "password": "{{passwordValue}}"
+  // })
+  
+}
+
+script:post-response {
+  bru.setVar("tokenValue", res.body.token);
+  
+  
+  
+}
+
+tests {
+  test("response time test", function() {
+    expect(res.getResponseTime()).to.lte(2000);
+  });
+}

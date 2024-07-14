@@ -1,0 +1,15 @@
+meta {
+  name: Delete Created Post
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:3000/posts/{{postIdValue}}
+  body: json
+  auth: none
+}
+
+script:post-response {
+  bru.setNextRequest(null);
+}

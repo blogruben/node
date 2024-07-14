@@ -1,0 +1,31 @@
+meta {
+  name: Partial Update User
+  type: http
+  seq: 4
+}
+
+patch {
+  url: https://reqres.in/api/users/2
+  body: json
+  auth: none
+}
+
+auth:basic {
+  username: 
+  password: 
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+      "name": "morpheus",
+      "job": "zion resident"
+  }
+}
+
+assert {
+  res.status: eq 200
+}

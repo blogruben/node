@@ -1,0 +1,15 @@
+meta {
+  name: Get Created Post
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/posts/{{postIdValue}}
+  body: none
+  auth: none
+}
+
+script:post-response {
+  bru.setNextRequest("Delete Created Post");
+}

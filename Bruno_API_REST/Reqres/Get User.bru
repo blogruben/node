@@ -1,0 +1,24 @@
+meta {
+  name: Get User
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://reqres.in/api/users/2
+  body: json
+  auth: none
+}
+
+auth:basic {
+  username: 
+  password: 
+}
+
+auth:bearer {
+  token: 
+}
+
+assert {
+  res.status: eq 200
+}

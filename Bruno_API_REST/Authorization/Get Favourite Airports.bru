@@ -1,0 +1,19 @@
+meta {
+  name: Get Favourite Airports
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://airportgap.com/api/favorites
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}
+
+script:pre-request {
+  req.setHeader("Authorization", "Bearer {{tokenValue}}");
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Update Created Post
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3000/posts/{{postIdValue}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "title": "json-server1",
+      "author": "typicode1"
+  }
+}
+
+script:post-response {
+  bru.setNextRequest("Get Created Post");
+}
