@@ -1,0 +1,19 @@
+meta {
+  name: unfollow
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseURLfollow}}/unfollow/66cdc0aade1a0632ab9743b7
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:multipart-form {
+  : 
+}

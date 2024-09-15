@@ -1,0 +1,24 @@
+meta {
+  name: registrar
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURLuser}}/register
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  name: uno
+  nick: uno
+  email: uno@gmail.com
+  password: uno
+  surname: uno
+  bio: hola soy uno
+}
+
+body:multipart-form {
+  : 
+}

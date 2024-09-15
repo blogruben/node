@@ -1,0 +1,19 @@
+meta {
+  name: remove
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseURLpublication}}/remove/66dca6798ec9a4c607453fef
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  text: Hola como estas
+}

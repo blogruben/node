@@ -1,0 +1,27 @@
+meta {
+  name: siguiendo
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURLfollow}}/following/
+  body: formUrlEncoded
+  auth: none
+}
+
+params:query {
+  : 
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  followed: 66cdc0aade1a0632ab9743b7
+}
+
+body:multipart-form {
+  : 
+}

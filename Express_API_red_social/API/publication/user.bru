@@ -1,0 +1,15 @@
+meta {
+  name: user
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseURLpublication}}/user/66ce3c61e547ee85fe4f3cbf/2
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}

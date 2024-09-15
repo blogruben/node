@@ -1,0 +1,23 @@
+meta {
+  name: follow
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURLfollow}}/save
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  followed: 66cdc0bede1a0632ab9743ba
+}
+
+body:multipart-form {
+  : 
+}

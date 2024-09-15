@@ -1,0 +1,15 @@
+meta {
+  name: prueba
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURLuser}}/prueba-usuario
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: mi profile
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseURLuser}}/profile/{{userId}}
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}

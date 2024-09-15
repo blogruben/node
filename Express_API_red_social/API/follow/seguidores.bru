@@ -1,0 +1,23 @@
+meta {
+  name: seguidores
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURLfollow}}/followers
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  followed: 66cdc0aade1a0632ab9743b7
+}
+
+body:multipart-form {
+  : 
+}

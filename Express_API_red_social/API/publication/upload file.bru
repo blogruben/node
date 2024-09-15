@@ -1,0 +1,24 @@
+meta {
+  name: upload file
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseURLpublication}}/upload/66e2d1d46966b45090389f7e
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  file0: 66cdc0bede1a0632ab9743ba
+  : 
+}
+
+body:multipart-form {
+  file0: @file(C:\Users\ruben\Desktop\x.png)
+}

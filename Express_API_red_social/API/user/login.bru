@@ -1,0 +1,25 @@
+meta {
+  name: login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURLuser}}/login
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  email: uno@gmail.com
+  password: uno
+}
+
+body:multipart-form {
+  : 
+}
+
+vars:post-response {
+  mytoken: res.body.token
+  userId: res.body.user.id
+}

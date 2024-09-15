@@ -1,0 +1,15 @@
+meta {
+  name: listar
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURLuser}}/list/1
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}

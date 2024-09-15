@@ -1,0 +1,19 @@
+meta {
+  name: save
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURLpublication}}/save
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  text: Hola como estas 6
+}

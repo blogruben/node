@@ -1,0 +1,28 @@
+meta {
+  name: update
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURLuser}}/update
+  body: formUrlEncoded
+  auth: none
+}
+
+headers {
+  Authorization: {{mytoken}}
+}
+
+body:form-urlencoded {
+  name: uno
+  nick: uno
+  email: uno@gmail.com
+  password1: uno
+  surname1: uno
+  bio1: hola soy uno
+}
+
+body:multipart-form {
+  : 
+}
